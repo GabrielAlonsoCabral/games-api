@@ -1,0 +1,10 @@
+# FOLDERS
+node_modules
+coverage
+.build/
+pgdata
+# FILES
+package-lock.json
+yarn.lock
+.env
+.DS_Store
