@@ -1,13 +1,18 @@
 import { Request, Response } from 'express';
 import prisma from '../prisma';
+import { convertMinutesAmountToHourString } from '../utils/DateUtils';
 
 export async function ListGamesController (request:Request, response:Response) {
   try {
     const games = await prisma.game.findMany({
+      orderBy: {
+        Ads: { _count: 'desc' }
+      },
       include: {
         _count: {
           select: {
             Ads: true
+
           }
         }
       }
@@ -41,7 +46,9 @@ export async function ListAdsByGamesController (request:Request, response:Respon
     const adsFiltered = ads.map(ad => {
       return {
         ...ad,
-        weekdays: ad.weekdays.split(',')
+        weekdays: ad.weekdays.split(','),
+        hourStart: convertMinutesAmountToHourString(ad.hourStart),
+        hourEnd: convertMinutesAmountToHourString(ad.hourEnd)
       };
     });
 
