@@ -1,7 +1,7 @@
 {
-  "name": "norte-engenharia-api",
+  "name": "games-api",
   "version": "1.0.0",
-  "description": "Norte Engenharia API",
+  "description": "Games API",
   "main": "server.js",
   "scripts": {
     "postinstall": "npx tsc",
