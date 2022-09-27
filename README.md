@@ -18,5 +18,4 @@ $ docker-compose up
 
 # Server
 $ npm run start:dev
-
 ```
